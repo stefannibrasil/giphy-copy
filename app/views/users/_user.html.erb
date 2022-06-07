@@ -1,0 +1,9 @@
+<div id="<%= dom_id user %>">
+  <p>
+    <strong>Gifs:</strong>
+    <% user.gifs.each do |gif| %>
+      <div><%= link_to gif.filename, gif %></div>
+    <% end %>
+  </p>
+
+</div>
