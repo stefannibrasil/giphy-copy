@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Gifs</h1>
+
+<div id="gifs">
+  <% @gifs.each do |gif| %>
+    <%= render gif %>
+    <p>
+      <%= link_to "Show this gif", gif %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New gif", new_gif_path %>

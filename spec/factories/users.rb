@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :user do
-    gifs { nil }
+    trait :with_gifs do
+      gifs { [association(:gif)] }
+    end
   end
 end

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @gif %>
+
+<div>
+  <%= link_to "Edit this gif", edit_gif_path(@gif) %> |
+  <%= link_to "Back to gifs", gifs_path %>
+
+  <%= button_to "Destroy this gif", @gif, method: :delete %>
+</div>
