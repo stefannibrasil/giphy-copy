@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  has_many_attached :gifs
+  has_many :gifs
 end
