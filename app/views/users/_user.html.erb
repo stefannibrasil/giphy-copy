@@ -1,9 +1,7 @@
 <div id="<%= dom_id user %>">
   <p>
-    <strong>Gifs:</strong>
-    <% user.gifs.each do |gif| %>
-      <div><%= link_to gif.filename, gif %></div>
-    <% end %>
+  <% user.gifs.each do |gif| %>
+    <div><%= image_tag gif.image %></div>
+  <% end %>
   </p>
-
 </div>

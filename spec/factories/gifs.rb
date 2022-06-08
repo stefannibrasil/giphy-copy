@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :gif do
-    user
     image { ::Rack::Test::UploadedFile.new("#{Rails.root}/spec/files/test_image.gif", "image/gif") }
 
     trait :invalid_size do

@@ -1,5 +1,6 @@
 class GifsController < ApplicationController
   before_action :set_gif, only: %i[ show edit update destroy ]
+  # before_action :current_user, only: :new
 
   # GET /gifs or /gifs.json
   def index
@@ -59,12 +60,17 @@ class GifsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    # def current_user
+    #   @user = User.find(params[:user_id]) if params[:user_id]
+    # end
+
     def set_gif
       @gif = Gif.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def gif_params
-      params.fetch(:gif, {})
+      params.require(:gif).permit(:image)
     end
 end

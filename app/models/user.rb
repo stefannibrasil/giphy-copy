@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  has_many :gifs
+  has_many :gifs, dependent: :destroy
 end
