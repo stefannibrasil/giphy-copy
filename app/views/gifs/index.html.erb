@@ -12,3 +12,8 @@
 </div>
 
 <%= link_to "New gif", new_gif_path %>
+
+<% if user_signed_in? %>
+  <%= link_to "Log out", logout_path, data: {"turbo-method": :delete} %>
+<% end %>
+

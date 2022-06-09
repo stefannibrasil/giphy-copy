@@ -1,6 +1,6 @@
 class GifsController < ApplicationController
+  before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_gif, only: %i[ show edit update destroy ]
-  # before_action :current_user, only: :new
 
   # GET /gifs or /gifs.json
   def index

@@ -1,2 +1,5 @@
 <div id="<%= dom_id gif %>">
+  <% if gif.image.attached? %>
+    <div><%= image_tag gif.image %></div>
+  <% end %>
 </div>
