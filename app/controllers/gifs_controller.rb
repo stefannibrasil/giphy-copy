@@ -1,6 +1,7 @@
 class GifsController < ApplicationController
   before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_gif, only: %i[ show edit update destroy ]
+  before_action :require_ownership, only: %i[ edit update destroy ]
 
   # GET /gifs or /gifs.json
   def index
@@ -13,7 +14,7 @@ class GifsController < ApplicationController
 
   # GET /gifs/new
   def new
-    @gif = Gif.new
+    @gif = current_user.gifs.build
   end
 
   # GET /gifs/1/edit
@@ -22,7 +23,7 @@ class GifsController < ApplicationController
 
   # POST /gifs or /gifs.json
   def create
-    @gif = Gif.new(gif_params)
+    @gif = current_user.gifs.new(gif_params)
 
     respond_to do |format|
       if @gif.save
@@ -60,10 +61,9 @@ class GifsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-
-    # def current_user
-    #   @user = User.find(params[:user_id]) if params[:user_id]
-    # end
+    def require_ownership
+      raise "Must be the owner to access this page" unless current_user == @gif.user
+    end
 
     def set_gif
       @gif = Gif.find(params[:id])
